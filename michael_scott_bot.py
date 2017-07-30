@@ -8,7 +8,7 @@ def authenticate():
     print("Authenticating...")
     reddit = praw.Reddit(
         "michaelscottbot",
-        user_agent="user agent here")
+        user_agent="michael scott bot v0.1")
     print("Authenticated as {}".format(reddit.user.me()))
     return reddit
 
@@ -30,6 +30,7 @@ def bot_run(reddit, idlist):
             print("Keyword found!")
             rep = ">" + quote
             rep += "\n\n\n - Michael Scott"
+            rep += "\n\n Hi I'm just a bot, bip bop. Thank you for noticing me!"
             comment.reply(rep)
             print("Repplied to comment: " + comment.id)
             idlist.append(comment.id)
