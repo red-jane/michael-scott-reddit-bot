@@ -27,7 +27,7 @@ def bot_run(reddit, idlist):
             quote = get_quote(comment.body)
             if quote == None:
                 return
-            print("Found!")
+            print("Keyword found!")
             rep = ">" + quote
             rep += "\n\n\n - Michael Scott"
             comment.reply(rep)
