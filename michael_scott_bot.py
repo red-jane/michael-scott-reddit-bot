@@ -1,13 +1,14 @@
 import praw
 import os
 from match_comment import get_quote
+import time
 
 
 def authenticate():
     print("Authenticating...")
     reddit = praw.Reddit(
         "michaelscottbot",
-        user_agent="nasotrang's Michael Scott Test v0.1")
+        user_agent="user agent here")
     print("Authenticated as {}".format(reddit.user.me()))
     return reddit
 
@@ -21,7 +22,7 @@ def main():
 
 def bot_run(reddit, idlist):
     print("Scanning comments...")
-    for comment in reddit.subreddit('test').comments(limit=1000):
+    for comment in reddit.subreddit('test').comments(limit=100):
         if comment.id not in idlist and comment.author != reddit.user.me():
             quote = get_quote(comment.body)
             if quote == None:
@@ -34,7 +35,7 @@ def bot_run(reddit, idlist):
             idlist.append(comment.id)
             with open("idlist.txt", "a") as f:
                 f.write(comment.id + "\n")
-
+    time.sleep(20)
 
 def get_saved_comments():
     if not os.path.isfile("idlist.txt"):
