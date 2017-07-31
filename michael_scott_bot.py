@@ -21,8 +21,8 @@ def main():
 
 
 def bot_run(reddit, idlist):
-    print("Scanning comments...")
-    for comment in reddit.subreddit('DunderMifflin').comments(limit=100):
+    print("Scanning for comments...")
+    for comment in reddit.subreddit('DunderMifflin').comments(limit=50):
         if comment.id not in idlist and comment.author != reddit.user.me():
             quote = get_quote(comment.body)
             if quote == None:
