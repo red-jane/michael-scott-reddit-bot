@@ -18,6 +18,7 @@ def main():
     idlist = get_saved_comments()
     while True:
         bot_run(reddit, idlist)
+        time.sleep(600)
 
 
 def bot_run(reddit, idlist):
@@ -36,7 +37,7 @@ def bot_run(reddit, idlist):
             idlist.append(comment.id)
             with open("idlist.txt", "a") as f:
                 f.write(comment.id + "\n")
-    time.sleep(20)
+
 
 def get_saved_comments():
     if not os.path.isfile("idlist.txt"):
