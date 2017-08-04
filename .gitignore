@@ -92,3 +92,5 @@ ENV/
 
 # config
 praw.ini
+idlist.txt
+idlist.txt
